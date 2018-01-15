@@ -1,0 +1,152 @@
+<script type="text/javascript">
+
+var businesses = [
+{
+	name: 'Osha Union',
+	street: '2033 Union St',
+	city: 'San Francisco',
+	state: 'CA',
+	zip: '94102',
+	country: 'USA',
+	phone: '(415) 567-6742',
+	lat: 37.797456, lng: -122.432752
+},
+
+{
+	name: 'Osha Thai',
+	street: '100 Drumm St',
+	city: 'San Francisco',
+	state: 'CA',
+	zip: '94110',
+	country: 'USA',
+	phone: '(415) 788-6742',
+	lat: 37.794616, lng: -122.396531
+}
+];
+
+var map = null;  
+var bounds = null;
+var currentMarker = null;
+var mapsquareDiv = null;
+var mapcontainerDiv = null;
+var clickedX = 0;
+var clickedY = 0;
+var isLoaded = false;
+
+
+function loadMap() {
+  if (GBrowserIsCompatible()) {
+    mapDiv.style.background = '#191919';
+    mapDiv.style.cursor = '';
+    map = new GMap2(mapDiv, {logoPassive: true});
+    bounds = new GLatLngBounds();
+    for (var i = 0; i < businesses.length; i++) {
+      bounds.extend(new GLatLng(businesses[i].lat, businesses[i].lng));
+    }
+    var latSpan = bounds.toSpan().lat();
+    map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
+
+    // The static map server gives markers more space when calculating
+    // bounds and zoom level, so sometimes the API will give a higher
+    // zoom level than was used by the static map server.
+    // The .98 value is just a guess right now, may need tweaking.
+    var newBounds = map.getBounds();
+    var newLatSpan = newBounds.toSpan().lat();
+    if (latSpan/newLatSpan > .90) { map.zoomOut(); }
+
+    for (var i = 0; i < businesses.length; i++) {
+      var marker = createMarker(i);
+      var latlng = marker.getLatLng();
+      var pixel = map.fromLatLngToDivPixel(latlng);
+      if (Math.abs(pixel.x - clickedX) < 12 && Math.abs(pixel.y - clickedY) < 20) {
+        //GEvent.trigger(marker, 'click');
+      }
+      map.addOverlay(marker);
+    }
+  }
+}
+
+
+function zoomToAll() {
+  map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
+}
+
+
+function createMarker(ind) {
+  var business = businesses[ind];
+  var marker = new GMarker(new GLatLng(business.lat, business.lng));
+  GEvent.addListener(marker, 'click', function() {
+    marker.html = ['<b>', business.name, '</b><br>', 
+                 business.street, '<br> ', business.city, ',', 
+                 business.state, ' ', business.zip, '<br>',
+                 business.phone, '<br><br>', 'Get directions: ', 
+                 '<a target="_blank" ',
+                 'href="http://maps.google.com/maps?saddr=&daddr=',
+                 formatAddressForMaps(business), '">to here</a> - ', 
+                 '<a target="_blank" ',
+                 'href="http://maps.google.com/maps?saddr=',
+                 formatAddressForMaps(business), '&daddr=', '"> from here <br> ',
+                 '<a href="javascript:zoomToAll()">View all locations</a>'].join('');
+    currentMarker = marker;
+    marker.openInfoWindowHtml(marker.html);
+  });
+  return marker;
+}
+
+
+function formatAddressForMaps(business) {
+  var address = business.street + ' ' + business.city + ' ' + business.state + ' ' + business.zip;
+  return escape(address.replace(' ', '+'));
+}
+
+
+function _cel(elementType, id) {
+  var element = document.createElement(elementType);
+  element.id = id;
+  return element;
+}
+
+
+function loadScript() {
+  if (!isLoaded) {
+    isLoaded = true;
+    var div = document.createElement('div');
+    div.className = 'message';
+    div.innerHTML = 'Loading...';
+    div.style.left = (380/2 - 53) + 'px';
+    div.style.top = 380/2 + 'px'; 
+    mapDiv.appendChild(div);
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'http://maps.google.com/maps?file=api&v=2' + 
+                 '&async=2&callback=loadMap&key=ABQIAAAAPIoS7JKqHbg-EsyEwebw-RRXjXgkR74cPIklGVNH4bOghs7sEhQ41SGjKXA3mOGcsnUZ54XrgGS6nQ';
+    document.body.appendChild(script);
+  }
+}
+
+
+function loadMapGadget() {
+  mapcontainerDiv = document.getElementById('mapcontainer');
+  mapsquareDiv = document.getElementById('mapsquare');
+
+  mapDiv.onclick = function (e) {
+    clickedX = (window.event && window.event.offsetX) || e.clientX;
+    clickedY = (window.event && window.event.offsetY) || e.clientY;
+    loadScript(); 
+  };
+
+  mapDiv.style.cursor = 'pointer';
+
+  var urlString = ['http://maps.google.com/staticmap?markers='];
+  var markerString = [];
+  for (var i = 0; i < businesses.length; i++) {
+    markerString.push(businesses[i].lat + ',' + businesses[i].lng + ',red');
+  }
+  urlString.push(markerString.join('|'));
+  urlString.push('&size=380x230');
+  urlString.push('&key=ABQIAAAAPIoS7JKqHbg-EsyEwebw-RRXjXgkR74cPIklGVNH4bOghs7sEhQ41SGjKXA3mOGcsnUZ54XrgGS6nQ');
+  mapDiv.style.background = 'url(\'' + urlString.join('') + '\')';
+
+}
+
+</script>

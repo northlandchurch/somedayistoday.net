@@ -1,0 +1,3 @@
+{exp:channel:categories show_empty="no" show="not 259|262" style="linear" status="not closed" backspace="1"}
+<?php $sendingchurches = "{category_name}"; $sendingchurches = preg_replace('/\bChurches\b/', '', $sendingchurches); echo $sendingchurches;?>
+{/exp:channel:categories}

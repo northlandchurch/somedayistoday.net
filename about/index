@@ -1,0 +1,27 @@
+{embed="_includes/.header"}
+{embed="_global/.nav"}
+
+	<div id="leftcol" class="grid_11 {trip-continent}">
+		{exp:channel:entries channel="About" limit="1" dynamic="on" orderby="date" sort="asc"}
+			{sit-about_body}
+		{/exp:channel:entries}
+	</div>
+
+	<div id="aside" class="grid_5">
+	<div class="col">
+		<div id="messaging" style="padding-bottom: 0; margin-bottom: 30px">
+			<h1>Make Your Someday, TODAY.</h1>
+			<p>You know that life-changing mission trip you've always wanted to experience? The one you've been putting off for way too long? Regardless of your situation, you really can choose to go spread the love of Christ today. Don't let today's excuses get in the way of your opportunity to change the world. <a href="{back-to-trips}">Check out the trips that are currently available</a>.</p>
+		</div>
+
+		<div id="maps">
+			<h2 id="hdl-globallocations">Global locations</h2>
+			<p><a href="{all-countries}"><img src="{asset-img-url}/maps.jpg" alt="maps" border="0" /></a></p>
+			<p><a href="{back-to-trips}" class="btn_alltrips">View All Trips</a></p>					
+		</div>
+
+	</div>
+	</div>
+	<div class="clear"></div>
+
+{embed="_includes/.footer"}

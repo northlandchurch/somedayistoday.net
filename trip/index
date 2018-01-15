@@ -1,0 +1,124 @@
+{embed="_includes/.header-triplist"}
+{embed="_global/.nav"}
+
+{if segment_2 == ''}
+	<div id="leftcol" class="grid_11">
+		<h2 id="hdl-trips" class="first">Trips</h2>
+		{exp:channel:entries channel="trips" status="open" dynamic="off" orderby="trip-startdate" sort="asc" show_expired="yes"}
+			<div class="trip {trip-continent}">
+				<div class="grid_4 alpha">
+					{exp:low_replace find="index.php/"}<a href="{title_permalink='trip'}"><img src="/_assets/trips/{trip-picture}" alt="{title}" class="tripimage {trip-continent}" border="0" /></a>{/exp:low_replace}
+					<p>{if status == "open"}{exp:low_replace find="index.php/"}<a href="{title_permalink='trip'}" class="btn_tripopen">This Trip Has Openings</a>{/if}{if status == "Full"}<a href="{title_permalink='trip'}" class="btn_tripfull">This Trip Has No Openings</a>{/exp:low_replace}{/if}</p>
+				</div>
+				<div class="grid_7 omega pad">
+					<h3>{exp:low_replace find="index.php/"}<a href="{title_permalink='trip'}">{title}</a>{/exp:low_replace}</h3>
+					<div class="pad half"></div>
+					<h4>{trip-startdate format="%F %j"} - {trip-enddate format="%F %j, %Y"}</h4>
+					{exp:word_limit total="30"}{trip-info}{/exp:word_limit}
+					<p><strong>Sending Organization:</strong> {if trip-sending_org}{trip-sending_org}{if:else}{embed="_includes/.sending_churches"}{/if}</p>
+					<p>{exp:low_replace find="index.php/"}<a href="{title_permalink='trip'}" class="btn_tripdetails">View The Trip Details</a>{/exp:low_replace}</p>
+				</div>
+				<div class="clear"></div>
+			</div>
+		{/exp:channel:entries}
+	</div>
+
+	<div id="aside_church" class="grid_5">
+		<div class="col">
+			<div id="messaging" style="padding-bottom: 0; margin-bottom: 30px">
+				<h1>Make Your Someday, TODAY.</h1>
+				<p>You know that life-changing mission trip you've always wanted to experience? The one you've been putting off for way too long? Regardless of your situation, you really can choose to go spread the love of Christ today. Don't let today's excuses get in the way of your opportunity to change the world. <a href="{back-to-trips}">Check out the trips that are currently available</a>.</p>
+			</div>
+			<div id="maps">
+				<h2 id="hdl-globallocations">Global locations</h2>
+				<div id="map_canvas"></div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+{if:else}
+	<div id="leftcol" class="grid_11 pad">
+
+		{exp:channel:entries channel="trips" status="open|Full" limit="1" show_expired="yes"}
+		<div class="trip {trip-continent}">
+			<div class="grid_4 alpha">
+				<img src="/_assets/trips/{trip-picture}" alt="{title}" class="tripimage {trip-continent}" style="margin-left: auto;margin-right: auto;width:" />
+				{if status == "open"}<a href="mailto:{trip-contactemail}?Subject=I want to serve in {trip-location}, {trip-country}. Someday is Today!" class="btn_tripopen">This Trip Has Openings</a>{/if}
+				{if status == "Full"}<a href="#" class="btn_tripfull">This Trip Has No Openings</a>{/if}
+				<p>
+				{categories show="not 4" show_group="5"}
+					{category_name}
+				{/categories}
+				</p>
+				<h5>{trip-cost}</h5>
+				<p><strong>Contact Person:</strong><br>{trip-contactname}<br />
+				<a href="mailto:{trip-contactemail}">{trip-contactemail}</a></p>
+				{if trip-deadline}<p><strong>Application Deadline:</strong><br>{trip-deadline format="%F %j, %Y"}</p>{/if}
+				<p><strong>Sending Organization:</strong><br>{if trip-sending_org}{trip-sending_org}{if:else}{embed="_includes/.sending_churches"}{/if}</p>
+			</div>
+			<div class="grid_7 omega pad">
+				<h3>{title}</h3>
+				<div class="pad half"></div>
+				<h4>{trip-startdate format="%F %j"} - {trip-enddate format="%F %j, %Y"}</h4>
+				{trip-info}
+				{if trip-application}
+					<p><a href="#" onclick="window.open('{trip-application}',  null, 'height=6918, width=680, toolbar=0, location=0, status=1, scrollbars=1,resizable=1'); return false" title="Someday is Today - TEAM MEMBER APPLICATION" class="btn_wanttogo">I Want to Go!</a></p>
+				{/if}
+				<p><a href="mailto:{trip-contactemail}?Subject=I'd love more information on the trip to {trip-location}, {trip-country}" class="btn_moreinfo">I Need More Information...</a></p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<p><a href="{back-to-trips}" class="btn_backalltrips">Back to All Trips</a></p>
+		<div class="clear"></div>
+		{/exp:channel:entries}
+
+		{!-- Trip Comments --}
+		<div id="comments">
+			<h2 id="hdl-comments">Trip Comments</h2>
+			{exp:comment:form preview="weblog/preview"}
+			<h2 id="hdl-comment">Now You Comment</h2>
+			{if logged_out}
+			<label for="name">Name:</label>		<input type="text" name="name" value="{name}" size="50" />
+			<label for="email">Email:</label>	<input type="text" name="email" value="{email}" size="50" />
+			<label for="url">URL:</label>		<input type="text" name="url" value="{url}" size="50" /></label>
+			{/if}
+
+			<textarea name="comment" cols="70" rows="10">{comment}</textarea>
+			<p class="commentextras"><input type="checkbox" name="save_info" value="yes" {save_info} /> Remember my personal information &nbsp;&nbsp;|&nbsp;&nbsp; <input type="checkbox" name="notify_me" value="yes" {notify_me} /> Notify me of follow-up comments?</p>
+			<input type="submit" name="submit" value="Submit" />
+			{/exp:comment:form}
+		</div>
+
+	</div>
+
+	{exp:channel:entries channel="trips" status="open|Full" limit="1" show_expired="yes"}
+	<div id="aside_church" class="grid_5">
+		<div class="col">
+			{categories show="not 259|260|261|262"}
+				<div id="maps" style="margin-bottom: 0">
+					<h2 id="hdl-location">Location</h2>
+					<div id="map_canvas"></div>
+				</div>
+			    <h2>About {trip-country}</h2>
+				<p>{wikipedia-desc}</p>
+				{if wikipedia-link != ''}
+					<p class="more"><a href="{wikipedia-link}">read more at wikipedia</a></p>
+				{/if}
+				{if flickr-link}
+					<div id="flickr">
+						<h2>Photos of {category_name}</h2>
+						<div class="photo grid_2 alpha"></div>
+						<div class="photo grid_2"></div>
+						<div class="photo grid_2"></div>
+						<div class="photo grid_2 omega"></div>
+						<p class="more"><a href="{flickr-link}">see more photos at flickr</a></p>
+					</div>
+				{/if}
+			{/categories}
+		</div>
+	</div>
+	{/exp:channel:entries}
+	<div class="clear"></div>
+{/if}
+{embed="_includes/.footer"}

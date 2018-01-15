@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Make Your Someday... Today.</title>
+<link rel="stylesheet" type="text/css" href="http://www.somedayistoday.net/index.php/_includes/960" />
+<link rel="stylesheet" type="text/css" href="http://www.somedayistoday.net/index.php/_includes/main" />
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-8813668-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+{exp:channel:entries channel="trips" status="open|Full" limit="1" show_expired="yes"}
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAf_n9BQZe6gBljT2xXSO2NBTk8aqgCCbIvAGpKT9xLnk8eR5s0hRurzzGg5nQMM5Qsvn85Cr-KriJQQ"></script>
+<script type="text/javascript">
+
+function initialize() {
+	if (GBrowserIsCompatible()) {
+		var map = new GMap2(document.getElementById("map_canvas"));
+		map.setCenter(new GLatLng({latitude}, {longitude}), 4);
+		map.addControl(new GSmallMapControl());
+
+		// Create our "tiny" marker icon
+		var blueIcon = new GIcon(G_DEFAULT_ICON);
+		blueIcon.image = "http://www.somedayistoday.net/_assets/img/pin-{trip-continent}.png";
+
+		// Set up our GMarkerOptions object
+		markerOptions = { icon:blueIcon };
+
+		// Add 10 markers to the map at random locations
+		var latlng = new GLatLng({latitude}, {longitude});
+		map.addOverlay(new GMarker(latlng, markerOptions));
+	}
+}
+
+</script>
+{/exp:channel:entries}
+
+<body onload="initialize()" onunload="GUnload()">
+
+<div id="container">
+<div class="container_16">

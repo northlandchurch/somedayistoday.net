@@ -1,0 +1,21 @@
+<div style="clear:both"></div>
+<div id="footer" class="container_16">
+	<div class="grid_5">
+		<p><strong>&copy; <?php $copyYear = 2009; $curYear = date('Y'); echo $copyYear . (($copyYear != $curYear) ? '-' . $curYear : '');
+?> Someday is Today.</strong><br />Make someday, today. Take your first step.</p>
+	</div>
+	<div class="grid_4">
+		<p><strong>Contact:</strong><br /><a href="mailto:Patti.Harshey@northlandchurch.net">Patti.Harshey@northlandchurch.net</a></p>
+	</div>
+	<div class="grid_7">
+		<p id="ic-video"><strong>Find out more about Someday is Today.</strong><br /><a href="http://www.somedayistoday.net/">Watch the flagship video</a> to get an idea on how Someday is Today is trying to help you make today your someday.</p>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div class="clear"></div>
+</div> <!-- End 960 Container -->
+</div> <!-- End Container background wrapping -->
+
+</body>
+</html>

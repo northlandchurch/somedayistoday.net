@@ -1,0 +1,11 @@
+	<div id="header">
+		<ul id="nav">
+			<li id="nav-trips"><a href="{back-to-trips}">Trips</a></li>
+			<li id="nav-countries"><a href="{all-countries}">Countries</a></li>
+			<li id="nav-about"><a href="/about/">About</a></li>
+			<li id="nav-contact"><a href="mailto:Patti.Harshey@northlandchurch.net">Contact</a></li>
+		</ul>
+		
+		<a href="/"><div id="logo" class="grid_16">Someday Is Today</div></a>
+		<div class="clear"></div>
+	</div>

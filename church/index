@@ -1,0 +1,103 @@
+{embed="_includes/.header"}
+{embed="_global/.nav"}
+
+{if segment_2 == ''}
+
+	<div id="leftcol" class="grid_9 pad">
+		<h2 id="hdl-participatingchurches">Participating Churches</h2>
+
+		{exp:channel:categories show_empty="no" show="not 259|262" style="linear" status="not closed"}
+		{if category_id == "5"}{/if}
+		{if category_id != "5"}
+		<div class="trip">
+			<h3 class="church"><a href="{category_url_title}">{category_name}</a></h3>
+			{if category_description}<p>{category_description}</p>{/if}
+			<p>&nbsp;</p>
+			<div class="clear"></div>
+		</div>
+		{/if}
+
+		{/exp:channel:categories}
+	</div>
+
+	<div id="aside_church" class="grid_7">
+	<div class="col">
+		<div id="messaging">
+			<h1>Make Your Someday, TODAY.</h1>
+			<p>You know that life-changing mission trip you've always wanted to experience? The one you've been putting off for way too long? Regardless of your situation, you really can choose to go spread the love of Christ today. Don't let today's excuses get in the way of your opportunity to change the world. Check out the trips that are currently available.</p>
+		</div>
+
+		<div id="maps">
+			<h2 id="hdl-globallocations">Global locations</h2>
+			<p><img src="{asset-img-url}/maps.jpg" alt="maps" /></p>
+			<p><a href="{back-to-trips}" class="btn_alltrips">View All Trips</a></p>					
+		</div>
+
+	</div>
+	</div>
+	<div class="clear"></div>
+
+{if:else}
+
+	{exp:query sql="SELECT cat_name AS categoryname, cat_id AS category_id, cat_image AS categoryimage FROM exp_categories WHERE cat_url_title = '{segment_2}'"}
+	<div id="leftcol" class="grid_9 pad">
+		<h1 class="church">{categoryname}</h1>
+		<h2 id="hdl-trips">Trips</h2>
+
+		{exp:channel:entries channel="trips" status="not closed" category="{category_id}" orderby="trip-startdate" sort="asc"}
+		<div class="trip {trip-continent}">
+			<div class="grid_4 alpha">
+				<a href="{title_permalink='trip'}"><img src="{trip-picture}" alt="{title}" class="tripimage {trip-continent}" border="0" /></a>
+				{if status == "open"}<a href="{title_permalink='trip'}" class="btn_tripopen">This Trip Has Openings</a>{/if}
+				{if status == "Full"}<a href="{title_permalink='trip'}" class="btn_tripfull">This Trip Has No Openings</a>{/if}
+			</div>
+			<div class="grid_5 omega pad">
+				<h3>{trip-location}, {trip-country}</h3>
+				<div class="pad half"></div>
+				<h4>{trip-startdate format="%F %j"} - {trip-enddate format="%j, %Y"}</h4>
+				{exp:word_limit total="50"}{trip-info}{/exp:word_limit}
+				<div class="meta">
+					<p><strong>Areas of Service:</strong> {exp:tag:tags entry_id="{entry_id}" type="weblog" backspace="1" orderby="clicks" sort="desc"}<a href="{path='service'}{websafe_tag}" title="{tag}">{tag}</a>, {/exp:tag:tags}</p>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		{/exp:channel:entries}
+		<p><a href="{back-to-trips}" class="btn_backalltrips">Back to All Trips</a></p>
+	</div>
+
+	<div id="aside_church" class="grid_7">
+	<div class="col">
+		{if categoryimage}
+		<div id="maps">
+			<h2 id="hdl-singlechurch">Church</h2>
+			<p><img src="{categoryimage}" /></p>
+		</div>{/if}
+		<div id="wiki">
+			<h2>About {categoryname}</h2>
+
+			{exp:query sql="SELECT cat_description AS categorydescription FROM exp_categories WHERE cat_id = '{category_id}'"}
+			{categorydescription}
+			{/exp:query}
+		</div>
+		{exp:query sql="SELECT field_id_3 AS cat_flickrlink FROM exp_category_field_data WHERE cat_id = '{category_id}'"}
+		{if cat_flickrlink}
+		<div id="flickr">
+			<h2>Photos of Turkmenistan</h2>
+			<div class="photo grid_2 alpha"></div>
+			<div class="photo grid_2"></div>
+			<div class="photo grid_2"></div>
+			<div class="photo grid_2 omega"></div>
+			<p class="more"><a href="{cat_flickrlink}">see more photos at flickr</a></p>
+		</div>
+		{/if}
+		{/exp:query}
+
+	</div>
+	</div>
+	<div class="clear"></div>
+	{/exp:query}
+
+{/if}
+
+{embed="_includes/.footer"}

@@ -1,0 +1,635 @@
+/* Someday is Today
+
+author: Aaron Martin, Justin Purdee
+website: www.superwindy.com
+version: 6 May 2009
+
+Sections:	@ HTML Elements -		*, html, body, p, p + p, a:link, a:visited, a:hover, a:active,
+									a img, hr, blockquote, code, strong, em, dl, dl dt
+			@ Links -				a
+			@ List Items -			ol, ol li, ol li a, ul, ul li, ul li a
+			@ Headings -			h1, h2, h3, h4, h5, h6
+			@ Forms -				input, textarea, input.checkbox, input.button, input.button:hover
+			@ Navigation
+			@ Structure
+			@ Footer
+			@ Content Items
+			@ Comments
+*/
+
+
+
+/* ============================================================================== @ Reset */
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1}
+ol,ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+:focus{outline:0}
+ins{text-decoration:none}
+del{text-decoration:line-through}
+table{border-collapse:collapse;border-spacing:0}
+
+
+
+/* ============================================================================== @ HTML Elements */
+
+html {
+	background: #191919 url(http://www.somedayistoday.net/_assets/img/bg-html.jpg) no-repeat 50% top;
+	}
+
+body {
+	background: url(http://www.somedayistoday.net/_assets/img/bg-body.png);
+	color: #fff;
+	font-family: Helvetica, Candara, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+	width: 100%;
+	}
+
+hr {
+	border: 0px #ccc solid;
+	border-top-width: 1px;
+	clear: both;
+	height: 0;
+	}
+
+p, dl, hr, h1, h2, h3, h4, h5, h6,
+ol, ul, pre, table, address, fieldset {
+	margin-bottom: 20px;
+	}
+
+.marg-b-10 { margin-bottom: 10px; }
+
+/* ============================================================================== @ HTML Elements */
+
+a:link, a:visited {
+	color: #d3a418;
+	}
+
+a:focus {
+	outline: 1px dotted invert;
+	}
+
+a.btn_tripdetails {
+	background: url(http://www.somedayistoday.net/_assets/img/btn_tripdetails.png) no-repeat;
+	display: block;
+	overflow: hidden;
+	width: 202px; height: 0; padding-top: 41px;
+	}
+
+	a.btn_tripdetails:hover {
+		background-position: 0 -41px;
+		}
+
+a.btn_alltrips {
+	background: url(http://www.somedayistoday.net/_assets/img/btn_alltrips.png) no-repeat;
+	display: block;
+	overflow: hidden;
+	width: 161px; height: 0; padding-top: 39px;
+	}
+
+	a.btn_alltrips:hover {
+		background-position: 0 -39px;
+		}
+
+a.btn_wanttogo {
+	background: url(http://www.somedayistoday.net/_assets/img/btn_iwanttogo-pill.png) no-repeat;
+	display: block;
+	height: 0;
+	margin: 0 0 0 0;
+	overflow: hidden;
+	padding-top: 43px;
+	width: 273px;
+	}
+
+a.btn_moreinfo {
+	background: url(http://www.somedayistoday.net/_assets/img/btn_moreinformation-pill.png) no-repeat;
+	display: block;
+	height: 0;
+	margin: 0 0 0 0;
+	overflow: hidden;
+	padding-top: 43px;
+	width: 273px;
+	}
+
+a.btn_backalltrips {
+	background: url(http://www.somedayistoday.net/_assets/img/btn_backalltrips.png) no-repeat;
+	display: block;
+	height: 0;
+	margin: 0 0 0 240px;
+	overflow: hidden;
+	padding-top: 39px;
+	width: 181px;
+	}
+
+	a.btn_backalltrips:hover {
+		background-position: 0 -39px;
+		}
+
+a.btn_tripopen {
+	background: url(http://www.somedayistoday.net/_assets/img/btn_tripstatus.png) no-repeat;
+	display: block;
+	height: 0;
+	margin: 10px auto 0;
+	overflow: hidden;
+	padding-top: 41px;
+	width: 202px;
+	}
+
+a.btn_tripfull {
+	background: url(http://www.somedayistoday.net/_assets/img/btn_tripstatus.png) no-repeat 0 -42px;
+	display: block;
+	height: 0;
+	margin: 10px auto 0;
+	overflow: hidden;
+	padding-top: 41px;
+	width: 202px;
+	}
+
+
+
+/* ============================================================================== @ Headings */
+
+h1 {
+	font-size: 45px;
+	line-height: 40px;
+	text-transform: uppercase;
+	}
+
+h1.church {
+	font-weight: normal;
+	padding: 0 0;
+	}
+
+h1.country {
+	display: inline;
+	font-weight: normal;
+	padding: 2px 10px;
+	}
+
+#messaging h1 {
+	background: url(http://www.somedayistoday.net/_assets/img/hdl-makeyoursomedaytoday.png) no-repeat;
+	height: 0;
+	line-height: normal;
+	margin-bottom: 15px;
+	overflow: hidden;
+	padding-top: 56px;
+	width:219px;
+	}
+
+h2 {
+	font-size: 23px;
+	}
+
+h2#hdl-comments {
+	background: url(http://www.somedayistoday.net/_assets/img/hdl-comments.png) no-repeat;
+	height: 0;
+	line-height: normal;
+	margin: 50px 0 20px;
+	overflow: hidden;
+	padding-top: 36px;
+	}
+
+h2#hdl-comment {
+	background: url(http://www.somedayistoday.net/_assets/img/hdl-comment.png) no-repeat;
+	height: 0;
+	line-height: normal;
+	margin: 50px 0 20px;
+	overflow: hidden;
+	padding-top: 36px;
+	}
+
+h2#hdl-singlechurch {
+	height: 0;
+	padding-top: 36px;
+	overflow: hidden;
+	background: url(http://www.somedayistoday.net/_assets/img/hdl-church.png) no-repeat;
+	line-height: normal;
+	}
+
+h2#hdl-participatingchurches {
+	height: 0;
+	padding-top: 36px;
+	overflow: hidden;
+	background: url(http://www.somedayistoday.net/_assets/img/hdl-participatingchurches.png) no-repeat;
+	line-height: normal;
+	}
+
+h2#hdl-countries {
+	height: 0;
+	padding-top: 36px;
+	overflow: hidden;
+	background: url(http://www.somedayistoday.net/_assets/img/hdl-countries.png) no-repeat;
+	line-height: normal;
+	}
+
+h2#hdl-featuredtrips {
+	height: 0; padding-top: 36px; overflow: hidden;
+	background: url(http://www.somedayistoday.net/_assets/img/hdl-featuredtrips.png) no-repeat;
+	line-height: normal;
+	}
+
+h2#hdl-globallocations {
+	height: 0; padding-top: 36px; overflow: hidden;
+	background: url(http://www.somedayistoday.net/_assets/img/hdl-globallocations.png) no-repeat;
+	line-height: normal;
+	}
+
+h2#hdl-sendingchurch {
+	height: 0; padding-top: 36px; overflow: hidden;
+	background: url(http://www.somedayistoday.net/_assets/img/hdl-sendingchurch.png) no-repeat;
+	line-height: normal;
+	}
+
+h2#hdl-trips {
+	background: url(http://www.somedayistoday.net/_assets/img/hdl-trips.png) no-repeat;
+	clear: both;
+	display: block;
+	height: 0;
+	line-height: normal;
+	margin-top: 50px;
+	overflow: hidden;
+	padding-top: 36px;
+	}
+
+h2#hdl-trips.first {
+	margin-top: 0px;
+	}
+
+h2#hdl-location {
+	height: 0; padding-top: 36px; overflow: hidden;
+	background: url(http://www.somedayistoday.net/_assets/img/hdl-location.png) no-repeat;
+	line-height: normal;
+	}
+
+h3 {
+	font-size: 21px;
+	line-height: 30px;
+	margin-bottom: 5px;
+	}
+
+	h3 a {
+		color: #fff !important;
+		text-decoration: none;
+		}
+
+	h3.church a {
+		color: #d3a418 !important;
+		text-decoration: underline;
+		}
+
+h4 {
+	font-size: 19px;
+	}
+
+h5 {
+	font-size: 17px;
+	}
+
+h6 {
+	font-size: 17px;
+	margin-bottom: 3px !important;
+	}
+
+
+
+/* ============================================================================== @ HTML Elements */
+
+label {
+	clear: both;
+	float: left;
+	margin-bottom: 5px;
+	width: 86px;
+	}
+
+input[type=text] {
+	background-color: #0b0b0b;
+	border: 0px solid;
+	color: #fff;
+	margin-bottom: 5px;
+	padding: 5px;
+	}
+
+textarea {
+	background-color: #0b0b0b;
+	border: 0px solid;
+	clear: both;
+	color: #fff;
+	float: left;
+	height: 100px;
+	margin-bottom: 10px;
+	padding: 5px;
+	}
+
+p.commentextras {
+	clear: both;
+	}
+
+
+/* ============================================================================== @ Navigation */
+
+#nav {
+	margin:0 0 0 15px;
+	list-style: none;
+	}
+
+	#nav li {
+		float: left;
+		margin: 0;
+		}
+
+		#nav li a {
+			display: block;
+			background: url(http://www.somedayistoday.net/_assets/img/nav.png) no-repeat;
+			height: 0; padding-top: 50px;
+			overflow: hidden;
+			}
+
+	#nav li#nav-trips a {
+		margin-right: 50px;
+		width: 58px;
+		}
+
+	#nav li#nav-trips a:hover { background-position: 0 -50px; }
+
+	#nav li#nav-countries a {
+		background-position: -339px 0;
+		margin-right: 50px;
+		width: 95px;
+		}
+
+	#nav li#nav-countries a:hover { background-position: -339px -50px; }
+
+	#nav li#nav-about a {
+		margin-right: 41px;
+		width: 67px;
+		background-position: -108px 0;
+		}
+
+	#nav li#nav-about a:hover { background-position: -108px -50px; }
+
+	#nav li#nav-contact a {
+		width: 82px;
+		background-position: -216px 0;
+		}
+
+	#nav li#nav-contact a:hover { background-position: -216px -50px; }
+
+
+
+/* ============================================================================== @ Structure */
+
+#container {
+	background: url(http://www.somedayistoday.net/_assets/img/bg-container-full.png) repeat-x;
+	}
+
+#header {
+	background: url(http://www.somedayistoday.net/_assets/img/bg-header.png) no-repeat;
+	margin-bottom: 35px;
+	padding-top: 0px;
+	}
+
+#logo {
+	background: url(http://www.somedayistoday.net/_assets/img/logo.png) no-repeat 50% 50%;
+	height: 0;
+	margin: 0 -43px;
+	overflow: hidden;
+	padding-top: 115px;
+	position: relative;
+	width: 1026px;
+	}
+
+#leftcol.pad {
+	padding-top: 18px;
+	}
+
+#aside {
+	background: url(http://www.somedayistoday.net/_assets/img/bg-aside.png) no-repeat 0 0;
+	}
+
+#aside .col {
+	margin-left: 20px;
+	}
+
+#aside_church {
+	background: url(http://www.somedayistoday.net/_assets/img/bg-aside-church.png) no-repeat 0 0;
+	min-height: 570px;
+	}
+
+#aside_church .col {
+	margin-left: 20px;
+	}
+
+
+
+/* ============================================================================== @ Footer */
+
+#footer {
+	background: url(http://www.somedayistoday.net/_assets/img/bg-footer.png) no-repeat 50% 0;
+	color: #484848;
+	margin: 50px 0 0;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	}
+
+#footer #ic-video {
+	background: url(http://www.somedayistoday.net/_assets/img/ic-display.png) no-repeat 0 5px;
+	padding-left: 35px;
+	}
+
+#footer a:link,
+#footer a:visited {
+	color: #484848;
+	}
+
+#footer a:hover,
+#footer a:hover {
+	color: #686868;
+	}
+
+
+
+/* ============================================================================== @ Content Items */
+
+#hero {
+	margin-bottom: 50px;
+	padding-bottom: 35px;
+	background: url(http://www.somedayistoday.net/_assets/img/hr-shadow.png) no-repeat 50% bottom;
+	}
+
+#video {
+	background: #fff;
+	margin-bottom: 20px;
+	padding: 8px 8px 3px;
+	}
+
+#messaging,
+#maps,
+#wiki {
+	background: url(http://www.somedayistoday.net/_assets/img/hr-sideshadow.png) no-repeat 50% bottom;
+	margin-bottom: 50px;
+	padding-bottom: 35px;
+	}
+
+p.about {
+	font-size: 18px;
+	line-height: 25px;
+	}
+
+#messaging p, #other p {
+	color: #a1a1a1;
+	line-height: 25px;
+	}
+
+
+
+/* @ Trip Display ========== */
+
+div#copyright {
+	display: none;
+	}
+
+#map_canvas {
+	border: 5px solid #fff;
+	height: 290px;
+	width: 630px;
+	}
+
+	#maps #map_canvas {
+		border: 0px solid #fff;
+		height: 160px;
+		width: 260px;
+		}
+
+.trip img.Africa		{ border-bottom: 5px solid #92754a; }
+.trip img.Asia	 		{ border-bottom: 5px solid #e8d60d; }
+.trip img.Australia		{ border-bottom: 5px solid #749f1e; }
+.trip img.Europe		{ border-bottom: 5px solid #23498b; }
+.trip img.NorthAmerica	{ border-bottom: 5px solid #a73434; }
+.trip img.SouthAmerica	{ border-bottom: 5px solid #7fb4dd; }
+
+.trip.Africa h3			{ background-color: #92754a; clear: both; display: inline; margin: 10px 0 10x; padding: 5px; }
+.trip.Asia h3			{ background-color: #e8d60d; clear: both; display: inline; margin: 10px 0 10x; padding: 5px; }
+.trip.Australia h3		{ background-color: #749f1e; clear: both; display: inline; margin: 10px 0 10x; padding: 5px; }
+.trip.Europe h3			{ background-color: #23498b; clear: both; display: inline; margin: 10px 0 10x; padding: 5px; }
+.trip.NorthAmerica h3	{ background-color: #a73434; clear: both; display: inline; margin: 10px 0 10x; padding: 5px; }
+.trip.SouthAmerica h3	{ background-color: #7fb4dd; clear: both; display: inline; margin: 10px 0 10x; padding: 5px; }
+
+.grid_11 .trip.Africa h3		{ background-color: #92754a; clear: both; display: inline; margin: 20px 0 10x; padding: 5px; }
+.grid_11 .trip.Asia h3			{ background-color: #e8d60d; clear: both; display: inline; margin: 20px 0 10x; padding: 5px; }
+.grid_11 .trip.Australia h3		{ background-color: #749f1e; clear: both; display: inline; margin: 20px 0 10x; padding: 5px; }
+.grid_11 .trip.Europe h3		{ background-color: #23498b; clear: both; display: inline; margin: 20px 0 10x; padding: 5px; }
+.grid_11 .trip.NorthAmerica h3	{ background-color: #a73434; clear: both; display: inline; margin: 20px 0 10x; padding: 5px; }
+.grid_11 .trip.SouthAmerica h3	{ background-color: #7fb4dd; clear: both; display: inline; margin: 20px 0 10x; padding: 5px; }
+
+.trip.Africa h4			{ color: #92754a; }
+.trip.Asia h4			{ color: #e8d60d; }
+.trip.Australia h4		{ color: #749f1e; }
+.trip.Europe h4			{ color: #23498b; }
+.trip.NorthAmerica h4	{ color: #a73434; }
+.trip.SouthAmerica h4	{ color: #7fb4dd; }
+
+h1.country.Africa		{ background-color: #92754a; }
+h1.country.Asia			{ background-color: #e8d60d; }
+h1.country.Australia	{ background-color: #749f1e; }
+h1.country.Europe		{ background-color: #23498b; }
+h1.country.NorthAmerica	{ background-color: #a73434; }
+h1.country.SouthAmerica	{ background-color: #7fb4dd; }
+
+.trip {
+	background: url(http://www.somedayistoday.net/_assets/img/bdr-plain.png) repeat-x bottom;
+	margin-bottom: 20px;
+	}
+
+	.omega.pad {
+		clear: none !important;
+		display: inline !important;
+		height: auto !important;
+		padding-top: 7px !important;
+		}
+
+	#leftcol .pad,
+	.trip .pad {
+		clear: both;
+		display: block;
+		height: 20px;
+		}
+
+	.trip .pad.half {
+		clear: both;
+		display: block;
+		height: 10px;
+		}
+
+	.trip .meta {
+		background: url(http://www.somedayistoday.net/_assets/img/hr-sideshadow.png) no-repeat 50% top;
+		margin-bottom: 20px;
+		padding-top: 15px;
+		}
+
+	.trip .meta p {
+		margin-bottom: 0;
+		}
+
+#wiki p {
+	font-size: 14px;
+	}
+
+#wiki.small p {
+	color: #a1a1a1;
+	font-size: 12px;
+	line-height: 20px;
+	}
+
+.more {
+	font-size: 10px !important;
+	font-weight: bold;
+	text-align: right;
+	text-transform: uppercase;
+	}
+
+	.more a {
+		display: -moz-inline-box;
+		display: inline-block;
+		padding-left: 15px;
+		color: #777;
+		}
+
+	#wiki .more a {
+		background: url(http://www.somedayistoday.net/_assets/img/ic-light.png) no-repeat 0 50%;
+		}
+
+	#flickr .more a {
+		background: url(http://www.somedayistoday.net/_assets/img/ic-flickr.png) no-repeat 0 50%;
+		}
+
+	#flickr .photo {
+		margin: 0 -3px 11px !important;
+		height: 83px;
+		background: url(http://www.somedayistoday.net/_assets/img/pic.png) no-repeat;
+		}
+
+
+
+/* ============================================================================== @ Comments */
+
+.comment-author {
+	color: #707070;
+	padding: 0 0 0 0;
+	}
+
+.comment-date {
+	color: #707070;
+	font-size: 10px;
+	line-height: 10px;
+	}
+
+div.comment {
+	border-bottom: 1px solid #333333;
+	margin: 0 0 15px 0;
+	padding: 0 0 -5px 0;
+	}
+
+

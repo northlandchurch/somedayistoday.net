@@ -1,0 +1,46 @@
+{embed="_includes/.header"}
+{embed="_global/.nav"}
+
+	<div id="leftcol" class="grid_11 pad">
+		<h1 class="church">Area of Service: {segment_2}</h1>
+		<h2 id="hdl-trips">Trips</h2>
+
+		{exp:tag:entries marker="service" excluse="yes" inclusive="no" orderby="entry_date" sort="asc" status="not closed"}
+		<div class="trip {trip-continent}">
+			<div class="grid_4 alpha">
+				<img src="{trip-picture}" alt="{title}" class="tripimage {trip-continent}" />
+				{if status == "open"}<a href="{title_permalink='trip'}" class="btn_tripopen">This Trip Has Openings</a>{/if}
+				{if status == "Full"}<a href="{title_permalink='trip'}" class="btn_tripfull">This Trip Has No Openings</a>{/if}
+			</div>
+			<div class="grid_7 omega pad">
+				<h3>{trip-location}, {trip-country}</h3>
+				<div class="pad half"></div>
+				<h4>{trip-startdate format="%F %j"} - {trip-enddate format="%j, %Y"}</h4>
+				{exp:word_limit total="50"}{trip-info}{/exp:word_limit}
+				<div class="meta">
+					<p><strong>Sending Churches:</strong> {exp:channel:categories show_empty="no" show="not 15|4" style="linear" status="not closed" backspace="1"}{category_name}, {/exp:channel:categories}<br />
+					<strong>Areas of Service:</strong> {exp:tag:tags entry_id="{entry_id}" type="weblog" backspace="1" orderby="clicks" sort="desc"}<a href="{path='service'}{websafe_tag}" title="{tag}">{tag}</a>, {/exp:tag:tags}</p>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		{/exp:tag:entries}
+		<p><a href="{back-to-trips}" class="btn_backalltrips">Back to All Trips</a></p>
+	</div>
+
+	<div id="aside_church" class="grid_5">
+	<div class="col">
+		<div id="messaging">
+			<h1>Make Your Someday, TODAY.</h1>
+			<p>You know that life-changing mission trip you've always wanted to experience? The one you've been putting off for way too long? Regardless of your situation, you really can choose to go spread the love of Christ today. Don't let today's excuses get in the way of your opportunity to change the world. Check out the trips that are currently available.</p>
+		</div>
+
+		<div id="maps">
+			<h2 id="hdl-globallocations">Global locations</h2>
+			<p><a href="{back-to-trips}"><img src="{asset-img-url}/maps.jpg" alt="maps" border="0" /></a></p>
+		</div>
+	</div>
+	</div>
+	<div class="clear"></div>
+
+{embed="_includes/.footer"}

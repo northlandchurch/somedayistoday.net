@@ -1,0 +1,77 @@
+{embed="_includes/.header"}
+{embed="_global/.nav"}
+
+	<div id="leftcol" class="grid_11">
+		<div id="hero">
+			<div id="video">
+				<object width="624" height="349">
+					<param name="allowfullscreen" value="true" />
+					<param name="allowscriptaccess" value="always" />
+					<param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=4494065&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=ffc501&amp;fullscreen=1" />
+					<embed src="http://vimeo.com/moogaloop.swf?clip_id=4494065&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=ffc501&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="624" height="349"></embed>
+				</object>
+			</div>
+		</div>
+
+		<h2 id="hdl-featuredtrips">Featured Trips</h2>
+		{exp:channel:entries channel="trips" category="259" orderby="date" sort="desc" limit="3"}
+		<div class="trip {trip-continent}">
+			<img src="{trip-picture}" alt="{title}" class="grid_4 alpha {trip-continent}" />
+			<div class="grid_7 omega pad">
+				<h3><a href="{title_permalink='trip'}">{title}</a></h3>
+				<div class="pad"></div>
+				{exp:word_limit total="50"}{trip-info}{/exp:word_limit}
+				<p><a href="{title_permalink="trip"}" class="btn_tripdetails">View The Trip Details</a></p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		{/exp:channel:entries}
+	</div>
+
+	<div id="aside" class="grid_5">
+	<div class="col">
+		<div id="messaging">
+			<h1>Make Your Someday, TODAY.</h1>
+			<p>You know that life-changing mission trip you've always wanted to experience? The one you've been putting off for way too long? Regardless of your situation, you really can choose to go spread the love of Christ today. Don't let today's excuses get in the way of your opportunity to change the world. <a href="{back-to-trips}">Check out the trips that are currently available</a>.</p>
+		</div>
+
+		<div id="maps">
+			<h2 id="hdl-globallocations">Global locations</h2>
+			<p><a href="{all-countries}"><img src="{asset-img-url}/maps.jpg" alt="maps" border="0" /></a></p>
+			<p><a href="{back-to-trips}" class="btn_alltrips">View All Trips</a></p>					
+		</div>
+
+		<div id="CHURCHLOGOS">
+			<h2 id="hdl-sendingchurch">Sending Church</h2>
+			<p>
+			{exp:channel:categories show_empty="yes" show="not 15|4" style="linear" status="not closed"}
+
+				{if category_id == '260'}{/if}
+				{if category_id != '260'}
+					{if category_image == ''}
+						{if wikipedia-link != ''}
+							<a href="{wikipedia-link}">{category_name}</a><br />
+						{/if}
+						{if wikipedia-link == ''}
+							{category_name}<br />
+						{/if}
+					{/if}
+					{if category_image != ''}
+						{if wikipedia-link != ''}
+							<a href="{wikipedia-link}"><img src="{category_image}" alt="{category_name}" border="0" /></a><br />
+						{/if}
+						{if wikipedia-link == ''}
+							<img src="{category_image}" alt="{category_name}" /><br />
+						{/if}
+					{/if}
+				{/if}
+			{/exp:channel:categories}
+			</p>
+
+		</div>
+		
+	</div>
+	</div>
+	<div class="clear"></div>
+
+{embed="_includes/.footer"}

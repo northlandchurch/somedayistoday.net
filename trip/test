@@ -1,0 +1,158 @@
+{if segment_3 == ''}
+
+{embed="_includes/.header-triplist"}
+{embed="_global/.nav"}
+
+	<div id="leftcol" class="grid_11">
+		<h2 id="hdl-trips" class="first">Trips</h2>
+		{exp:channel:entries channel="trips" dynamic="off" orderby="trip-startdate" status="open|Full" sort="asc"}
+		<div class="trip {trip-continent}">
+			<div class="grid_4 alpha">
+				<a href="{title_permalink='trip'}"><img src="{trip-picture}" alt="{title}" class="tripimage {trip-continent}" border="0" /></a>
+				<p>{if status == "open"}<a href="{title_permalink='trip'}" class="btn_tripopen">This Trip Has Openings</a>{/if}{if status == "Full"}<a href="{title_permalink='trip'}" class="btn_tripfull">This Trip Has No Openings</a>{/if}</p>
+			</div>
+			<div class="grid_7 omega pad">
+				<h3><a href="{title_permalink='trip'}">{title}</a></h3>
+				<div class="pad half"></div>
+				<h4>{trip-startdate format="%F %j"} - {trip-enddate format="%F %j, %Y"}</h4>
+				{exp:word_limit total="30"}{trip-info}{/exp:word_limit}
+				<p><strong>Sending Churches:</strong> {exp:replace find="Churches, "}{exp:channel:categories show_empty="no" show="not 15|4" style="linear" status="not closed" backspace="1"}{category_name}, {/exp:channel:categories}<br />
+				<strong>Areas of Service:</strong> {exp:tag:tags entry_id="{entry_id}" type="weblog" backspace="1" orderby="clicks" sort="desc"}<a href="{path='service'}{websafe_tag}" title="{tag}">{tag}</a>, {/exp:tag:tags}</p>
+				<p><a href="{title_permalink='trip'}" class="btn_tripdetails">View The Trip Details</a></p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		{/exp:channel:entries}
+	</div>
+
+	<div id="aside_church" class="grid_5">
+	<div class="col">
+		<div id="messaging">
+			<h1>Make Your Someday, TODAY.</h1>
+			<p>You know that life-changing mission trip you've always wanted to experience? The one you've been putting off for way too long? Regardless of your situation, you really can choose to go spread the love of Christ today. Don't let today's excuses get in the way of your opportunity to change the world. <a href="{back-to-trips}">Check out the trips that are currently available</a>.</p>
+		</div>
+		<div id="maps">
+			<h2 id="hdl-globallocations">Global locations</h2>
+			<div id="map_canvas"></div>
+		</div>
+	</div>
+	</div>
+	<div class="clear"></div>
+
+{if:else}
+{embed="_includes/.header-map"}
+{embed="_global/.nav"}
+
+	<div id="leftcol" class="grid_11 pad">
+		{exp:channel:entries channel="trips" status="open|Full" limit="1"}
+		<h1 class="church">{trip-location}, {trip-country}</h1>
+
+		{if trip-vimeo}
+		<object width="640" height="358">
+			<param name="allowfullscreen" value="true" />
+			<param name="allowscriptaccess" value="always" />
+			<param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id={trip-vimeo}&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color={if trip-continent == "Africa"}92754a{/if}{if trip-continent == "Asia"}e2e500{/if}{if trip-continent == "Australia"}749f1e{/if}{if trip-continent == "Europe"}23498b{/if}{if trip-continent == "NorthAmerica"}a73434{/if}{if trip-continent == "SouthAmerica"}7fb4dd{/if}&amp;fullscreen=1" />
+			<embed src="http://vimeo.com/moogaloop.swf?clip_id={trip-vimeo}&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color={if trip-continent == "Africa"}92754a{/if}{if trip-continent == "Asia"}e2e500{/if}{if trip-continent == "Australia"}749f1e{/if}{if trip-continent == "Europe"}23498b{/if}{if trip-continent == "NorthAmerica"}a73434{/if}{if trip-continent == "SouthAmerica"}7fb4dd{/if}&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="640" height="358"></embed>
+		</object>
+		{/if}
+		<div class="pad"></div>
+		{/exp:channel:entries}
+
+		{exp:channel:entries channel="trips" status="open|Full" limit="1"}
+		<div class="trip {trip-continent}">
+			<div class="grid_4 alpha">
+				<img src="{trip-picture}" alt="{title}" class="tripimage {trip-continent}" />
+				{if status == "open"}<a href="mailto:{trip-contactemail}?Subject=I want to serve in {trip-location}, {trip-country}. Someday is Today!" class="btn_tripopen">This Trip Has Openings</a>{/if}
+				{if status == "Full"}This Trip Has No Openings{/if}
+				<p>
+				{categories show="not 4" show_group="5"}
+					{category_name}
+				{/categories}
+				</p>
+				<!-- <h5>$ {trip-cost}</h5> -->
+				<p><strong>Contact Person:</strong> {trip-contactname}<br />
+				<a href="mailto:{trip-contactemail}">{trip-contactemail}</a></p>
+				{if trip-deadline}<p><strong>Application Deadline:</strong> {trip-deadline format="%F %j, %Y"}</p>{/if}
+				<p><strong>Sending Churches:</strong> {exp:replace find="Churches, "}{exp:channel:categories show_empty="no" show="not 15|4" style="linear" status="not closed" backspace="1"}{category_name}, {/exp:channel:categories}<br />
+				<strong>Areas of Service:</strong> {exp:tag:tags entry_id="{entry_id}" type="weblog" backspace="1" orderby="clicks" sort="desc"}<a href="{path='service'}{websafe_tag}" title="{tag}">{tag}</a>, {/exp:tag:tags}</p>
+			</div>
+			<div class="grid_7 omega pad">
+				<h3>{title}</h3>
+				<div class="pad half"></div>
+				<h4>{trip-startdate format="%F %j"} - {trip-enddate format="%F %j, %Y"}</h4>
+				{trip-info}
+				<p><a href="mailto:{trip-contactemail}?Subject=I want to serve in {trip-location}, {trip-country}. Someday is Today!" class="btn_wanttogo">I Want to Go!</a></p>
+				<p><a href="mailto:{trip-contactemail}?Subject=I'd love more information on the trip to {trip-location}, {trip-country}" class="btn_moreinfo">I Need More Information...</a></p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<p><a href="{back-to-trips}" class="btn_backalltrips">Back to All Trips</a></p>
+		<div class="clear"></div>
+		{/exp:channel:entries}
+
+		<!-- Trip Comments -->
+		<div id="comments">
+			<h2 id="hdl-comments">Trip Comments</h2>
+			{exp:comment:entries sort="asc" limit="30"}
+			{if no_results}No one has commented yet. Be the first!{/if}
+			<div class="comment">
+			{name} said <span class="comment-date">Added on {comment_date format="%F %j, %Y"} at {comment_date format="%h:%i %A"}</span>
+				{comment}
+			</div>
+			{/exp:comment:entries}
+
+			{exp:comment:form preview="weblog/preview"}
+			<h2 id="hdl-comment">Now You Comment</h2>
+			{if logged_out}
+			<label for="name">Name:</label>		<input type="text" name="name" value="{name}" size="50" />
+			<label for="email">Email:</label>	<input type="text" name="email" value="{email}" size="50" />
+			<label for="url">URL:</label>		<input type="text" name="url" value="{url}" size="50" /></label>
+			{/if}
+			<textarea name="comment" cols="70" rows="10">{comment}</textarea>
+			<p class="commentextras"><input type="checkbox" name="save_info" value="yes" {save_info} /> Remember my personal information &nbsp;&nbsp;|&nbsp;&nbsp; <input type="checkbox" name="notify_me" value="yes" {notify_me} /> Notify me of follow-up comments?</p>
+			<input type="submit" name="submit" value="Submit" />
+			{/exp:comment:form}
+		</div>
+
+	</div>
+
+	{exp:channel:entries channel="trips" status="open|Full" limit="1"}
+	<div id="aside_church" class="grid_5">
+	<div class="col">
+		{exp:query sql="SELECT cat_id as categoryid, cat_image AS categoryimage FROM exp_categories WHERE cat_name = '{trip-country}'"}
+		{if categoryimage}
+		<div id="maps">
+			<h2 id="hdl-location">Location</h2>
+			<div id="map_canvas"></div>
+		</div>
+		{/if}
+		<div id="wiki" class="small">
+			<h2>About {trip-country}</h2>
+			{exp:query sql="SELECT field_id_1 AS cat_wikilink, field_id_2 AS wikipedia_description FROM exp_category_field_data WHERE cat_id = '{categoryid}'"}
+			{wikipedia_description}
+			{if cat_wikilink != ''}<p class="more"><a href="{cat_wikilink}">read more at wikipedia</a></p>{/if}
+			{/exp:query}
+		</div>
+
+		{exp:query sql="SELECT field_id_3 AS cat_flickrlink FROM exp_category_field_data WHERE cat_id = '{categoryid}'"}
+		{if cat_flickrlink}
+		<div id="flickr">
+			<h2>Photos of Turkmenistan</h2>
+			<div class="photo grid_2 alpha"></div>
+			<div class="photo grid_2"></div>
+			<div class="photo grid_2"></div>
+			<div class="photo grid_2 omega"></div>
+			<p class="more"><a href="{cat_flickrlink}">see more photos at flickr</a></p>
+		</div>
+		{/if}
+		{/exp:query}
+
+		{/exp:query}
+	</div>
+	</div>
+	<div class="clear"></div>
+	{/exp:channel:entries}
+
+{/if}
+
+{embed="_includes/.footer"}

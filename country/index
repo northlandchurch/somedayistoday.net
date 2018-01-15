@@ -1,0 +1,99 @@
+{embed="_includes/.header"}
+{embed="_global/.nav"}
+
+{if segment_2 == ''}
+	<div id="leftcol" class="grid_9 pad">
+		<h2 id="hdl-countries">Countries</h2>
+
+		{exp:channel:categories show_empty="no" show="not 259|260" style="linear" ordrby="category_name" sort="asc" status="not closed"}
+		{if category_id == "262"}{/if}
+		{if category_id != "262"}
+		<div class="trip">
+			<h3 class="church"><a href="{category_url_title}">{category_name}</a></h3>
+			{if category_description}<p>{exp:word_limit total="50"}{category_description}{/exp:word_limit}</p>{/if}
+			<p>&nbsp;</p>
+			<div class="clear"></div>
+		</div>
+		{/if}
+		{/exp:channel:categories}
+	</div>
+
+	<div id="aside_church" class="grid_7">
+	<div class="col">
+		<div id="messaging" style="margin-bottom: 30px; padding-bottom: 0">
+			<h1>Make Your Someday, TODAY.</h1>
+			<p>You know that life-changing mission trip you've always wanted to experience? The one you've been putting off for way too long? Regardless of your situation, you really can choose to go spread the love of Christ today. Don't let today's excuses get in the way of your opportunity to change the world. Check out the trips that are currently available.</p>
+		</div>
+
+		<div id="maps">
+			<h2 id="hdl-globallocations">Global locations</h2>
+			<p><img src="{asset-img-url}/maps.jpg" alt="maps" /></p>
+			<p><a href="{back-to-trips}" class="btn_alltrips">View All Trips</a></p>					
+		</div>
+	</div>
+	</div>
+	<div class="clear"></div>
+
+{/if}
+{if segment_2 != ''}
+
+	{exp:query sql="SELECT cat_name AS categoryname, cat_id AS category_id, cat_image AS categoryimage FROM exp_categories WHERE cat_url_title = '{segment_2}'"}
+	<!-- starting!!! -->
+	<div id="leftcol" class="grid_9 pad">
+		{exp:channel:entries channel="trips" status="not closed" category="{category_id}" orderby="date" sort="asc" limit="1"}
+		<h1 class="country {trip-continent}">{trip-country}</h1>
+		{/exp:channel:entries}
+		<h2 id="hdl-trips">Trips</h2>
+
+		{exp:channel:entries channel="trips" status="not closed" category="{category_id}" orderby="trip-startdate" sort="asc"}
+		<div class="trip {trip-continent}">
+			<div class="grid_4 alpha">
+				<a href="{title_permalink='trip'}"><img src="/_assets/trips/{trip-picture}" alt="{title}" class="tripimage {trip-continent}" border="0" /></a>
+				{if status == "open"}<a href="{title_permalink='trip'}" class="btn_tripopen">This Trip Has Openings</a>{/if}
+				{if status == "Full"}<a href="{title_permalink='trip'}" class="btn_tripfull">This Trip Has No Openings</a>{/if}
+			</div>
+			<div class="grid_5 omega pad">
+				<h3><a href="{title_permalink='trip'}">{trip-location}, {trip-country}</a></h3>
+				<div class="pad half"></div>
+				{if {trip-startdate format="%F"} == {trip-enddate format="%F"}}
+					<h4>{trip-startdate format="%F %j"} - {trip-enddate format="%F %j, %Y"}</h4>
+				{if:else}
+					<h4>{trip-startdate format="%F %j"} - {trip-enddate format="%j, %Y"}</h4>
+				{/if}
+				{exp:word_limit total="50"}{trip-info}{/exp:word_limit}
+				<div class="meta">
+					<p><strong>Sending Churches:</strong> {embed="_includes/.sending_churches"}</p>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		{/exp:channel:entries}
+		<p><a href="{back-to-trips}" class="btn_backalltrips">Back to All Trips</a></p>
+	</div>
+	{/exp:query}
+
+	<div id="aside" class="grid_7">
+		{exp:channel:categories}
+		{if category_url_title == '{segment_2}'}
+		<div class="col">
+			<div id="maps">
+				<h2 id="hdl-location">Location</h2>
+				<p><img src="{category_image}" /></p>
+			</div>
+			<div id="wiki">
+				{exp:channel:entries channel="trips" status="not closed" category="{category_id}" orderby="date" sort="desc" limit="1"}
+				<h2>About {trip-country}</h2>
+				{/exp:channel:entries}
+	
+				{wikipedia-desc}
+				<p class="more"><a href="{wikipedia-link}">read more at wikipedia</a></p>
+			</div>
+		</div>
+		{/if}
+		{/exp:channel:categories}
+	</div>
+	<div class="clear"></div>
+
+{/if}
+
+{embed="_includes/.footer"}
