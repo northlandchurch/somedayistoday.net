@@ -1,22 +1,25 @@
 {embed="_includes/.header"}
 {embed="_global/.nav"}
 
-	<div id="leftcol" class="grid_11">
-		<div id="hero">
-			<div id="video">
-				<object width="624" height="349">
-					<param name="allowfullscreen" value="true" />
-					<param name="allowscriptaccess" value="always" />
-					<param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=4494065&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=ffc501&amp;fullscreen=1" />
-					<embed src="http://vimeo.com/moogaloop.swf?clip_id=4494065&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=ffc501&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="624" height="349"></embed>
-				</object>
+	<div id="hero" style="margin-bottom: 0; padding-bottom: 20px;">
+		<div id="hero-image"  data-toggle="modal" data-target="#videoModal">
+			<img id="video" src="{asset-img-url}/graphy-map-transparent-960.png" />
+			<div id="cta" style="margin-bottom: 30px; padding-bottom: 0">
+				<h1>Make Your Someday, TODAY.</h1>
+				<p>Lorem ipsum dolor sit amet.</p>
 			</div>
 		</div>
+		<div id="messaging" style="margin-bottom: 30px; padding-bottom: 0">
+			<p>You know that life-changing mission trip you've always wanted to experience? The one you've been putting off for way too long? Regardless of your situation, you really can choose to go spread the love of Christ today. Don't let today's excuses get in the way of your opportunity to change the world.</p>
+			<p><a href="{back-to-trips}" class="btn_alltrips">View All Trips</a></p>
+		</div>
+	</div>
 
+	<div id="leftcol" class="grid_11">
 		<h2 id="hdl-featuredtrips">Featured Trips</h2>
-		{exp:channel:entries channel="trips" category="259" orderby="date" sort="desc" limit="3"}
+		{exp:channel:entries channel="trips" category="259" orderby="title" sort="asc" limit="3" show_expired="yes"}
 		<div class="trip {trip-continent}">
-			<img src="{trip-picture}" alt="{title}" class="grid_4 alpha {trip-continent}" />
+			<a href="{title_permalink='trip'}"><img src="/_assets/trips/{trip-picture}" alt="{title}" class="grid_4 alpha {trip-continent}" border="0" /></a>
 			<div class="grid_7 omega pad">
 				<h3><a href="{title_permalink='trip'}">{title}</a></h3>
 				<div class="pad"></div>
@@ -26,26 +29,25 @@
 			<div class="clear"></div>
 		</div>
 		{/exp:channel:entries}
+		
+		<p><a href="{back-to-trips}" class="btn_alltrips">View All Trips</a></p>
 	</div>
 
 	<div id="aside" class="grid_5">
 	<div class="col">
-		<div id="messaging">
-			<h1>Make Your Someday, TODAY.</h1>
-			<p>You know that life-changing mission trip you've always wanted to experience? The one you've been putting off for way too long? Regardless of your situation, you really can choose to go spread the love of Christ today. Don't let today's excuses get in the way of your opportunity to change the world. <a href="{back-to-trips}">Check out the trips that are currently available</a>.</p>
-		</div>
-
 		<div id="maps">
 			<h2 id="hdl-globallocations">Global locations</h2>
 			<p><a href="{all-countries}"><img src="{asset-img-url}/maps.jpg" alt="maps" border="0" /></a></p>
-			<p><a href="{back-to-trips}" class="btn_alltrips">View All Trips</a></p>					
+			<a href="{back-to-trips}"><img class="marg-b-10" src="{asset-img-url}/view-all-trips.png"></a>
+                        <a href="https://northlandchurch.wufoo.com/forms/distributed-journey-team-leader-evaluation/"><img class="marg-b-10" src="{asset-img-url}/leader-eval.png"></a>
+                        <a href="https://northlandchurch.wufoo.com/forms/distributed-journey-team-member-evaluation-form/"><img class="marg-b-10" src="{asset-img-url}/team-eval.png"></a>
+		        <a href="https://northlandchurch.wufoo.com/forms/m7x1z5/"><img class="marg-b-10" src="{asset-img-url}/application.png"></a>			
 		</div>
 
-		<div id="CHURCHLOGOS">
+		<div id="churchlogos">
 			<h2 id="hdl-sendingchurch">Sending Church</h2>
 			<p>
-			{exp:channel:categories show_empty="yes" show="not 15|4" style="linear" status="not closed"}
-
+			{exp:channel:categories show_empty="yes" show="not 259|262" style="linear" status="not closed"}
 				{if category_id == '260'}{/if}
 				{if category_id != '260'}
 					{if category_image == ''}
@@ -67,11 +69,37 @@
 				{/if}
 			{/exp:channel:categories}
 			</p>
-
 		</div>
-		
+		<div id="other">
+			<p>
+				Don't see a short-term trip that meets your needs or your interests? Check out these other sending organizations that facilitate short-term mission all over the globe!
+			</p>
+			<p>
+				<a href="http://moreusa.org/brazil-trip" target="_blank">MORE International</a><br>
+				<a href="http://www.gemission.org/" target="_blank">Greater Europe Missions</a><br>
+				<a href="http://www.thirstmissions.org/" target="_blank">Thirst Missions</a>
+			</p>
+		</div>
 	</div>
 	</div>
 	<div class="clear"></div>
+
+	<div id="videoModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Someday is Today</h4>
+				</div>
+				<div class="modal-body">
+					<iframe src="https://player.vimeo.com/video/4494065?color=FFC945&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 {embed="_includes/.footer"}

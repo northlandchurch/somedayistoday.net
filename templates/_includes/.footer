@@ -16,6 +16,23 @@
 <div class="clear"></div>
 </div> <!-- End 960 Container -->
 </div> <!-- End Container background wrapping -->
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://player.vimeo.com/api/player.js"></script>
+	<script type="text/javascript" src="/_assets/jquery-ui-1.11.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="/_assets/js/bootstrap-modal.min.js"></script>
+	<script type="text/javascript" src="/_assets/js/draggable-modal.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var player = new Vimeo.Player($("#videoModal"));
+		$('#videoModal').on('show.bs.modal', function (e) {
+			e.stopPropagation();
+			player.play();
+		});
+		$("#videoModal").on('hidden.bs.modal', function (e) { // on closing the modal
+			e.stopPropagation();
+			player.pause();
+		});
+	});
+	</script>
 </body>
 </html>

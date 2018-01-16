@@ -43,9 +43,13 @@ body {
 	background: url(http://www.somedayistoday.net/_assets/img/bg-body.png);
 	color: #fff;
 	font-family: Helvetica, Candara, Arial, sans-serif;
-	font-size: 12px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 16px;
+	letter-spacing:1px;
 	line-height: 20px;
 	width: 100%;
+	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
 	}
 
 hr {
@@ -457,12 +461,13 @@ p.commentextras {
 	margin-bottom: 50px;
 	padding-bottom: 35px;
 	background: url(http://www.somedayistoday.net/_assets/img/hr-shadow.png) no-repeat 50% bottom;
+	position: relative;
 	}
 
 #video {
-	background: #fff;
+	background: none;
 	margin-bottom: 20px;
-	padding: 8px 8px 3px;
+	max-width:100%;
 	}
 
 #messaging,
@@ -483,7 +488,57 @@ p.about {
 	line-height: 25px;
 	}
 
+/* cta and messaging blocks on homepage */
+#hero-image {
+	cursor: pointer;
+}
+#hero #cta {
+	padding: 0 20%;
+	position: absolute;
+	top: 10%;
+}
+#hero #cta:after {
+	background-image: url('{asset-img-url}/site-sprites.png');
+	background-size: 250px 500px;
+    content: '';
+    display: block;
+    position: absolute;
+    height: 43px;
+    top: 50%;
+    margin-top: -22px;
+    left: 50%;
+    margin-left: -20px;
+    width: 41px;
+    z-index: 2;
 
+	background-position: 0 -145px;
+    height: 105px;
+    margin-top: -52px;
+    width: 105px;
+    margin-left: -52px;
+}
+#hero #cta,
+#hero #messaging {
+	background: none;
+	text-align: center;
+}
+#hero #cta h1,
+hero #messaging h1 {
+	background: none;
+	height: unset;
+	font-size: 65px;
+	font-weight: 700;
+	letter-spacing: 4.5px;
+	line-height: normal;
+	margin-bottom: 15px;
+	overflow: hidden;
+	padding-top: 56px;
+	width: unset;
+}
+#hero #cta p,
+#hero #messaging p {
+	font-size: 24px;
+}
 
 /* @ Trip Display ========== */
 
@@ -633,3 +688,11 @@ div.comment {
 	}
 
 
+/* ============================================================================== @ Modal */
+
+.modal {
+	color: black;
+}
+.modal-body iframe {
+	max-width:100%;
+}
