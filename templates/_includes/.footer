@@ -5,7 +5,7 @@
 ?> Someday is Today.</strong><br />Make someday, today. Take your first step.</p>
 	</div>
 	<div class="grid_4">
-		<p><strong>Contact:</strong><br /><a href="mailto:Patti.Harshey@northlandchurch.net">Patti.Harshey@northlandchurch.net</a></p>
+		<p><strong>Contact:</strong><br /><a href="mailto:{main-contact-email}">{main-contact-email}</a></p>
 	</div>
 	<div class="grid_7">
 		<p id="ic-video"><strong>Find out more about Someday is Today.</strong><br /><a href="http://www.somedayistoday.net/">Watch the flagship video</a> to get an idea on how Someday is Today is trying to help you make today your someday.</p>
