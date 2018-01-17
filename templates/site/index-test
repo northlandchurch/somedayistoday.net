@@ -18,7 +18,13 @@
 
 	<div id="leftcol" class="grid_11">
 		<h2 id="hdl-featuredtrips">Featured Trips</h2>
-		{exp:channel:entries channel="trips" category="259" orderby="title" sort="asc" limit="3" show_expired="yes"}
+		{exp:channel:entries
+			channel="trips"
+			category="259"
+			orderby="trip-startdate"
+			sort="asc"
+			show_expired="yes"
+		}
 		<div class="trip {trip-continent}">
 			<a href="{title_permalink='trip'}"><img src="/_assets/trips/{trip-picture}" alt="{title}" class="grid_4 alpha {trip-continent}" border="0" /></a>
 			<div class="grid_7 omega pad">
@@ -48,7 +54,12 @@
 		<div id="churchlogos">
 			<h2 id="hdl-sendingchurch">Sending Church</h2>
 			<p>
-			{exp:channel:categories show_empty="yes" show="not 259|262" style="linear" status="not closed"}
+			{exp:channel:categories
+				show_empty="yes"
+				show="not 259|262"
+				style="linear"
+				status="not closed"
+			}
 				{if category_id == '260'}{/if}
 				{if category_id != '260'}
 					{if category_image == ''}
