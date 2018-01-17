@@ -23,15 +23,18 @@
 	<script type="text/javascript" src="/_assets/js/draggable-modal.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		var player = new Vimeo.Player($("#videoModal"));
-		$('#videoModal').on('show.bs.modal', function (e) {
-			e.stopPropagation();
-			player.play();
-		});
-		$("#videoModal").on('hidden.bs.modal', function (e) { // on closing the modal
-			e.stopPropagation();
-			player.pause();
-		});
+		var modal = $("#videoModal");
+		if(modal.length) {
+			var player = new Vimeo.Player(modal);
+			$(modal).on('show.bs.modal', function (e) {
+				e.stopPropagation();
+				player.play();
+			});
+			$(modal).on('hidden.bs.modal', function (e) { // on closing the modal
+				e.stopPropagation();
+				player.pause();
+			});
+		}
 	});
 	</script>
 </body>
