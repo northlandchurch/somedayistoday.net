@@ -497,25 +497,15 @@ p.about {
 	position: absolute;
 	top: 10%;
 }
-#hero #cta:after {
+span.play-icon {
 	background-image: url('{asset-img-url}/site-sprites.png');
-	background-size: 250px 500px;
-    content: '';
-    display: block;
-    position: absolute;
-    height: 43px;
-    top: 50%;
-    margin-top: -22px;
-    left: 50%;
-    margin-left: -20px;
-    width: 41px;
-    z-index: 2;
-
 	background-position: 0 -145px;
-    height: 105px;
-    margin-top: -52px;
-    width: 105px;
-    margin-left: -52px;
+	background-size: 250px 500px;
+	display: block;
+	height: 105px;
+	margin: 0 auto 20px;
+	width: 105px;
+	z-index: 2;
 }
 #hero #cta,
 #hero #messaging {

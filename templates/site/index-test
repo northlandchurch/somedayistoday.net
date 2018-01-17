@@ -5,8 +5,9 @@
 		<div id="hero-image"  data-toggle="modal" data-target="#videoModal">
 			<img id="video" src="{asset-img-url}/graphy-map-transparent-960.png" />
 			<div id="cta" style="margin-bottom: 30px; padding-bottom: 0">
-				<h1>Make Your Someday, TODAY.</h1>
-				<p>Lorem ipsum dolor sit amet.</p>
+				<h1>We have 9 Teams traveling in 2018.</h1>
+				<span class="play-icon"></span>
+				<p>See How Lives are Changing &gt;</p>
 			</div>
 		</div>
 		<div id="messaging" style="margin-bottom: 30px; padding-bottom: 0">
