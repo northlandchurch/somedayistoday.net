@@ -3,7 +3,7 @@
 			<div class="nav-left">
 				<li id="nacd-logo">
 					<a href="https://www.northlandchurch.net">
-						<img src="{asset-img-url}/NACD_logo_primary2.png" />
+						<img src="{asset-img-url}/NACD_logo_primary2.png" alt="Northland Church" />
 					</a>
 				</li>
 				<div class="clear"></div>
