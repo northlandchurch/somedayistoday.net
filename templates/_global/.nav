@@ -1,9 +1,21 @@
 	<div id="header">
 		<ul id="nav">
-			<li id="nav-trips"><a href="{back-to-trips}">Trips</a></li>
-			<li id="nav-countries"><a href="{all-countries}">Countries</a></li>
-			<li id="nav-about"><a href="/about/">About</a></li>
-			<li id="nav-contact"><a href="mailto:Patti.Harshey@northlandchurch.net">Contact</a></li>
+			<div class="nav-left">
+				<li id="nacd-logo">
+					<a href="https://www.northlandchurch.net">
+						<img src="{asset-img-url}/NACD_logo_primary2.png" />
+					</a>
+				</li>
+				<div class="clear"></div>
+			</div>
+			<div class="nav-right">
+				<li id="nav-trips"><a href="{back-to-trips}">Trips</a></li>
+				<li id="nav-countries"><a href="{all-countries}">Countries</a></li>
+				<li id="nav-about"><a href="/about/">About</a></li>
+				<li id="nav-contact"><a href="mailto:{main-contact-email}">Contact</a></li>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
 		</ul>
 		
 		<a href="/"><div id="logo" class="grid_16">Someday Is Today</div></a>

@@ -337,7 +337,19 @@ p.commentextras {
 #nav {
 	margin:0 0 0 15px;
 	list-style: none;
+	height: 50px;
 	}
+
+	#nav .nav-left {
+		float: left;
+		width: 50%;
+		height: 100%;
+		}
+
+	#nav .nav-right {
+		float: right;
+		width: 50%;
+		}
 
 	#nav li {
 		float: left;
@@ -347,10 +359,23 @@ p.commentextras {
 		#nav li a {
 			display: block;
 			background: url(http://www.somedayistoday.net/_assets/img/nav.png) no-repeat;
-			height: 0; padding-top: 50px;
+			height: 0;
 			overflow: hidden;
+			padding-top: 50px;
 			}
+	
+	#nav li#nacd-logo,
+	#nav li#nacd-logo a,
+	#nav li#nacd-logo img {
+		height: 100%;
+	}
 
+	#nav li#nacd-logo a {
+		background-image: none;
+		display: inline-block;
+		padding: 0;
+		}
+	
 	#nav li#nav-trips a {
 		margin-right: 50px;
 		width: 58px;
