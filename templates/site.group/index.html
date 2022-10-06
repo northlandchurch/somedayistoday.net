@@ -1,0 +1,128 @@
+{embed="_includes/.header"}
+{embed="_global/.nav"}
+
+{exp:channel:entries
+	channel="Homepage"
+	limit="1"
+	dynamic="on"
+	orderby="date"
+	sort="asc"
+}
+<div id="hero" style="margin-bottom: 0; padding-bottom: 20px;">
+	<div id="hero-image"  data-toggle="modal" data-target="#videoModal">
+		<img id="video" src="{asset-img-url}/graphy-map-transparent-960.png" />
+		<div id="cta" style="margin-bottom: 30px; padding-bottom: 0">
+			{sit-homepage_headline}
+			<span class="play-icon"></span>
+			{sit-homepage_cta}
+		</div>
+	</div>
+
+	<div id="messaging" style="margin-bottom: 30px; padding-bottom: 0">
+		<p>You know that life-changing mission trip you've always wanted to experience? The one you've been putting off for way too long? Regardless of your situation, you really can choose to go spread the love of Christ today. Don't let today's excuses get in the way of your opportunity to change the world.</p>
+		<p><a href="{back-to-trips}" class="btn_alltrips">View All Trips</a></p>
+	</div>
+</div>
+{/exp:channel:entries}
+
+
+
+<div id="leftcol" class="grid_11">
+	<h2 id="hdl-featuredtrips">Featured Trips</h2>
+	
+	{exp:channel:entries
+		channel="trips"
+		category="46"
+		orderby="trip-startdate"
+		sort="asc"
+		show_expired="yes"
+	}
+	<div class="trip {trip-continent}">
+		<a href="{title_permalink='trip'}"><img src="{trip-picture}" alt="{title}" class="grid_4 alpha {trip-continent}" border="0" /></a>
+		<div class="grid_7 omega pad">
+			<h3><a href="{title_permalink='trip'}">{title}</a></h3>
+			<div class="pad"></div>
+			{trip-info:limit characters='200'}
+			<p><a href="{title_permalink="trip"}" class="btn_tripdetails">View The Trip Details</a></p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	{/exp:channel:entries}
+	
+	<p><a href="{back-to-trips}" class="btn_alltrips">View All Trips</a></p>
+</div>
+
+
+
+
+<div id="aside" class="grid_5">
+	<div class="col">
+		<div id="maps">
+			<h2 id="hdl-globallocations">Global locations</h2>
+			<p><a href="{all-countries}"><img src="{asset-img-url}/maps.jpg" alt="maps" border="0" /></a></p>
+			<a href="{back-to-trips}"><img class="marg-b-10" src="{asset-img-url}/view-all-trips.png"></a>
+			<a href="https://northlandchurch.wufoo.com/forms/distributed-journey-team-leader-evaluation/"><img class="marg-b-10" src="{asset-img-url}/leader-eval.png"></a>
+			<a href="https://northlandchurch.wufoo.com/forms/distributed-journey-team-member-evaluation-form/"><img class="marg-b-10" src="{asset-img-url}/team-eval.png"></a>
+			<a href="https://northlandchurch.wufoo.com/forms/m7x1z5/"><img class="marg-b-10" src="{asset-img-url}/application.png"></a>			
+		</div>
+
+		<div id="churchlogos">
+			<h2 id="hdl-sendingchurch">Sending Church</h2>
+			<p>
+
+			{exp:channel:categories category_group="10"}
+				{if category_image == ''}
+					{if wikipedia_link_church_website != ''}
+						<a href="{wikipedia_link_church_website}">{category_name}</a><br />
+					{if:else}
+						{category_name}<br />
+					{/if}
+				{if:else}
+					{if wikipedia_link_church_website != ''}
+						<a href="{wikipedia_link_church_website}"><img src="{category_image}" alt="{category_name}" border="0" /></a><br />
+					{if:else}
+						<img src="{category_image}" alt="{category_name}" /><br />
+					{/if}
+				{/if}
+			{/exp:channel:categories}
+
+			</p>
+		</div>
+		
+		<div id="other">
+			<p>Don't see a short-term trip that meets your needs or your interests? Check out these other sending organizations that facilitate short-term mission all over the globe!</p>
+			<p>
+				<a href="https://moreinternational.org/" target="_blank">MORE International</a><br>
+				<a href="http://www.gemission.org/" target="_blank">Greater Europe Missions</a><br>
+				<a href="http://www.thirstmissions.org/" target="_blank">Thirst Missions</a>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+
+
+
+
+<div id="videoModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Someday is Today</h4>
+			</div>
+			<div class="modal-body">
+				<iframe src="https://player.vimeo.com/video/4494065?color=FFC945&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+{embed="_includes/.footer"}
