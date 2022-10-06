@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Make Someday... Today.</title>
+<link rel="stylesheet" type="text/css" href="" />
+</head>
+<body>
+
+
+{exp:weblog:entries weblog="trips" orderby="date" sort="desc" limit="15"}
+
+	<h1>{title}</h1>
+	<h2>{trip-startdate format="%F %j"} - {trip-enddate format="%j, %Y"}</h2>
+	<p>
+		{trip-location}<br />
+		
+
+
+trip-location
+trip-continent
+trip-info
+trip-contactname
+trip-contactemail
+trip-contactphone
+
+
+trip-cost
+trip-picture
+trip-flickr
+trip-wikipedia
+trip-maplink
+
+	Tags: {exp:tag:tags type="weblog" backspace="2" }{tag}, {/exp:tag:tags}
+
+{/exp:weblog:entries} 
+
+
+</body>
+</html>
